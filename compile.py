@@ -34,13 +34,8 @@ def compile(dirPath, layoutPath, outputDir='.', globalData={}):
     for i in range(0, len(files)):
         name=outputDir+'/'+files[i]['outputName']
         content=renderedFiles[i]
-        with open(name, 'wb') as file:
-            try:
-                file.write(bytes(content.encode('utf8')))
-            except UnicodeEncodeError as e:
-                print("Failure on", name, ":", e)
-                print("Was writing:")
-                print(content.encode('utf-8'))
+        file=open(name, 'w')
+        file.write(content)
 
 # example compilation
 #compile('views', 'layouts/layout.mustache')
